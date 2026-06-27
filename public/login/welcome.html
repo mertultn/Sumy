@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumy - Welcome</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            color: #c4c4c4;
+            background: linear-gradient(135deg, #000000, #120720);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .buttons button{
+            width: 150px;
+            height: 70px;
+            padding: 12px 24px;
+            background: none;
+            color: #ffffff;
+            border: 1px solid white;
+            border-radius: 16px;;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-family: 'Segoe Script', cursive;
+            margin-bottom: 80px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HOŞGELDİNİZ</h1>
+
+    <div class="buttons">
+        <button onclick="window.location.href='/haveAcc'">Hesabınız var mı? Giriş Yap</button>
+        <button onclick="window.location.href='/createAcc'">Yeni misiniz? Kayıt Ol</button>
+    </div>
+</body>
+</html>

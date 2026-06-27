@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sumy</string>
+    <string name="title_activity_main">Sumy</string>
+    <string name="package_name">com.sumy.app</string>
+    <string name="custom_url_scheme">com.sumy.app</string>
+</resources>

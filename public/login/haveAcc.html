@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumy - Giriş Yap</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000, #120720);
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif; 
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        #control {
+            flex-direction: column;
+            display: flex;
+            gap: 30px;
+        }
+
+        #name-control, #password-control {
+            border-radius: 16px;
+            width: 200px;
+            height: 50px;
+            padding: 10px 12px;
+            border: none;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 17px;
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 50px;
+            color: white;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .input-group {
+            flex-direction: column;
+            display: flex;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+        }
+
+        #login-btn {
+            border-radius: 16px;
+            width: 150px;
+            height: 50px;
+            border: none;
+            font-size: 20px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            background: none;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href='/welcome'" id="back-btn">← Geri</button>
+
+    <h1> Hoşgeldin </h1>
+    <h2> Giriş yap </h1>
+    <div id="control">
+        <div class="input-group">
+            <label>İsim</label>
+            <input id="name-control" type="text" placeholder="Takma adınızı giriniz" />
+        </div>
+        <div class="input-group">
+            <label>Şifre</label>
+            <input id="password-control" type="text" placeholder="Şifrenizi giriniz" />
+        </div>
+    </div>
+
+    <button id="login-btn" onclick="login()">Giriş Yap</button>
+
+    <script>
+        function login() {
+            const nickname = document.getElementById('name-control').value;
+            const password = document.getElementById('password-control').value;
+
+            if (!nickname || !password) {
+                alert('Lütfen tüm alanları doldur');
+                return;
+            }
+
+            fetch('/giris', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nickname, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.basarili) {
+                    window.location.href = '/chat';
+                } else {
+                    alert(data.hata);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
