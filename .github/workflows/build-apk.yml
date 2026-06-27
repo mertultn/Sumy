@@ -13,11 +13,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - run: npm install
-      - run: npm install @capacitor/android
-      - run: npx cap sync android
+      
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Sync Capacitor
+        run: |
+          chmod +x ./node_modules/.bin/cap
+          npx cap sync android
+          
       - name: Build APK
-        run: cd android && ./gradlew assembleDebug
+        run: |
+          cd android
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+          
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
